@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Astraea: Sobreviventes do Abismo Quântico • CrazyGames</title>
+  <title>Astral Survivor: Neon Void • CrazyGames</title>
   <link rel="icon" type="image/svg+xml" href="./icon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,8 +27,8 @@
       <div class="boss-banner-content">
         <span class="boss-icon">⚠️</span>
         <div class="boss-text">
-          <div class="boss-title">ALERTA DE ANOMALIA QUÂNTICA</div>
-          <div class="boss-name" id="boss-banner-name">O DEVORADOR DE ÉTER</div>
+          <div class="boss-title" data-i18n="bossAlert">QUANTUM ANOMALY DETECTED</div>
+          <div class="boss-name" id="boss-banner-name">VOID OVERLORD</div>
         </div>
       </div>
     </div>
@@ -38,14 +38,14 @@
       <!-- Top Bar: Status, Progresso de Estrelas, Timer e HP -->
       <div class="hud-top">
         <div class="hud-left">
-          <div class="badge level-badge">NVL <span id="hud-level">1</span></div>
+          <div class="badge level-badge"><span data-i18n="level">LVL</span> <span id="hud-level">1</span></div>
           <div class="badge kills-badge">💀 <span id="hud-kills">0</span></div>
           <div class="badge coins-badge">💎 <span id="hud-coins">0</span></div>
         </div>
 
         <div class="hud-center">
           <div class="hud-title-row">
-            <span class="hud-sector-title" id="hud-sector-title">SETOR 1: ANEL DE DETRITOS</span>
+            <span class="hud-sector-title" id="hud-sector-title">SECTOR 1: OUTER NEON RING</span>
             <!-- Barra de 3 Estrelas em Tempo Real -->
             <div class="stars-tracker" id="hud-stars-tracker">
               <span class="star-icon" id="star-1">★</span>
@@ -71,19 +71,22 @@
           <div class="hp-badge">❤️ <span id="hud-hp">100</span>/<span id="hud-max-hp">100</span></div>
 
           <!-- Botão Concluir Fase Cedo (Aprovada com 1 Estrela) -->
-          <button id="btn-early-finish" class="early-finish-btn pointer-events-auto hidden">
-            ✅ CONCLUIR FASE (★) ➔
+          <button id="btn-early-finish" class="early-finish-btn pointer-events-auto hidden" data-i18n="earlyFinish">
+            ✅ COMPLETE STAGE (★) ➔
           </button>
 
-          <!-- Pills de Atalho Rápido (Desktop / Telas > 768px) -->
-          <button id="btn-quick-sectors" class="hud-btn secondary-action pointer-events-auto" title="Fases">🗺️</button>
-          <button id="btn-quick-shop" class="hud-btn secondary-action pointer-events-auto" title="Hangar / Loja">🚀</button>
-          <button id="btn-quick-quests" class="hud-btn secondary-action pointer-events-auto" title="Missões">📜</button>
-          <button id="btn-quick-daily" class="hud-btn secondary-action pointer-events-auto" title="Recompensa Diária">🎁</button>
-          <button id="btn-quick-spin" class="hud-btn secondary-action pointer-events-auto" title="Roleta Quântica">🎡</button>
+          <!-- Seletor de Idioma EN / PT-BR -->
+          <button id="btn-lang-toggle" class="hud-btn pointer-events-auto" title="Language / Idioma">🌐 EN</button>
 
-          <button id="btn-sound-toggle" class="hud-btn pointer-events-auto" title="Som">🔊</button>
-          <button id="btn-pause" class="hud-btn pointer-events-auto" title="Pausa">⏸️</button>
+          <!-- Pills de Atalho Rápido (Desktop / Telas > 768px) -->
+          <button id="btn-quick-sectors" class="hud-btn secondary-action pointer-events-auto" title="Sectors / Fases">🗺️</button>
+          <button id="btn-quick-shop" class="hud-btn secondary-action pointer-events-auto" title="Hangar / Shop">🚀</button>
+          <button id="btn-quick-quests" class="hud-btn secondary-action pointer-events-auto" title="Quests / Missões">📜</button>
+          <button id="btn-quick-daily" class="hud-btn secondary-action pointer-events-auto" title="Daily Rewards">🎁</button>
+          <button id="btn-quick-spin" class="hud-btn secondary-action pointer-events-auto" title="Quantum Wheel">🎡</button>
+
+          <button id="btn-sound-toggle" class="hud-btn pointer-events-auto" title="Sound">🔊</button>
+          <button id="btn-pause" class="hud-btn pointer-events-auto" title="Pause">⏸️</button>
         </div>
       </div>
 
@@ -103,15 +106,15 @@
           </div>
         </div>
         <div class="mobile-hint">
-          <span>DISPARO AUTOMÁTICO</span>
-          <button id="btn-mobile-sectors" class="mobile-nav-btn pointer-events-auto">🗺️ FASES</button>
+          <span data-i18n="autoFire">AUTO-FIRING ACTIVE</span>
+          <button id="btn-mobile-sectors" class="mobile-nav-btn pointer-events-auto">🗺️ SECTORS</button>
           <button id="btn-mobile-shop" class="mobile-nav-btn pointer-events-auto">🚀 HANGAR</button>
         </div>
       </div>
 
       <!-- Bottom Lore & Rodapé Oficial kinomuse.com.br -->
       <div class="hud-bottom">
-        <span class="hud-hint">WASD / Setas para mover • Disparo Automático</span>
+        <span class="hud-hint" data-i18n="moveHint">WASD / Arrow Keys to Move • Auto-Aim Weapons</span>
         <a href="https://kinomuse.com.br" target="_blank" rel="noopener noreferrer" class="hud-link pointer-events-auto">
           kinomuse.com.br
         </a>
@@ -121,31 +124,31 @@
     <!-- MODAL 1: LORE & INTRODUÇÃO DINÂMICA -->
     <div id="modal-lore" class="game-modal hidden">
       <div class="modal-card lore-card">
-        <div class="modal-badge">PROTOCOLO QUANTUM 0-X</div>
-        <div class="modal-title">ASTRAEA: SOBREVIVENTES DO ABISMO QUÂNTICO</div>
+        <div class="modal-badge" data-i18n="protocol">NEBULA PROTOCOL 0-9</div>
+        <div class="modal-title" data-i18n="loreTitle">ASTRAL SURVIVOR: NEON VOID</div>
         <div class="lore-body">
-          <p>
-            Nas profundezas do setor estelar esquecido, naves colonizadoras lutam contra enxames de
-            <strong>entidades de matéria escura</strong> que ameaçam colapsar o contínuo espaço-tempo.
+          <p data-i18n="loreP1">
+            Deep in Nebula Sector 9, a core failure has unleashed swarms of synthetic dark matter anomalies.
+            The star pilot must survive the quantum siege using orbital plasma weapons before the engine collapses.
           </p>
           <div class="lore-points">
             <div class="lore-point">
               <span class="point-icon">🚀</span>
-              <span><strong>Mova sua Nave:</strong> Desvie dos enxames polares e colete os Cristais de XP.</span>
+              <span><strong data-i18n="lorePoint1Title">Maneuver Starship:</strong> <span data-i18n="lorePoint1Desc">Evade 360° polar swarms and vacuum hazards.</span></span>
             </div>
             <div class="lore-point">
               <span class="point-icon">⚡</span>
-              <span><strong>Evolua em Tempo Real:</strong> Escolha 1 entre 3 aprimoramentos a cada novo nível.</span>
+              <span><strong data-i18n="lorePoint2Title">Collect XP Shards:</strong> <span data-i18n="lorePoint2Desc">Absorb quantum energy dropped by anomalies to level up.</span></span>
             </div>
             <div class="lore-point">
               <span class="point-icon">⭐</span>
-              <span><strong>Conquiste as 3 Estrelas:</strong> Sobreviva ao cronômetro e derrote os Chefes de Setor!</span>
+              <span><strong data-i18n="lorePoint3Title">Defeat Sector Bosses:</strong> <span data-i18n="lorePoint3Desc">Survive the countdown and destroy the Void Overlord for 3-Star glory!</span></span>
             </div>
           </div>
         </div>
         <div class="btn-group">
-          <button id="btn-lore-start" class="action-btn primary-btn pulse-glow">INICIAR COMBATE ➔</button>
-          <button id="btn-lore-skip" class="action-btn secondary-btn">PULAR INTRO</button>
+          <button id="btn-lore-start" class="action-btn primary-btn pulse-glow" data-i18n="startBattle">START MISSION ➔</button>
+          <button id="btn-lore-skip" class="action-btn secondary-btn" data-i18n="skipIntro">SKIP INTRO</button>
         </div>
       </div>
     </div>
@@ -153,8 +156,8 @@
     <!-- MODAL 2: LEVEL UP / ESCOLHA DE UPGRADES -->
     <div id="modal-levelup" class="game-modal hidden">
       <div class="modal-card levelup-card">
-        <div class="modal-title neon-title">⚡ EVOLUÇÃO DE PODER QUÂNTICO!</div>
-        <div class="modal-subtitle">Escolha 1 aprimoramento para sua build:</div>
+        <div class="modal-title neon-title" data-i18n="powerSurge">⚡ QUANTUM POWER EVOLUTION!</div>
+        <div class="modal-subtitle" data-i18n="chooseUpgrade">Choose 1 enhancement for your starship build:</div>
         <div id="upgrade-cards-container" class="cards-grid"></div>
       </div>
     </div>
@@ -162,17 +165,17 @@
     <!-- MODAL 3: PAUSA -->
     <div id="modal-pause" class="game-modal hidden">
       <div class="modal-card">
-        <div class="modal-title">PAUSADO</div>
+        <div class="modal-title" data-i18n="paused">SYSTEM PAUSED</div>
         <div class="stats-row">
-          <div>Tempo: <strong id="pause-timer">00:00</strong></div>
-          <div>Abates: <strong id="pause-kills">0</strong></div>
-          <div>Nível: <strong id="pause-level">1</strong></div>
+          <div><span data-i18n="time">TIME</span>: <strong id="pause-timer">00:00</strong></div>
+          <div><span data-i18n="kills">KILLS</span>: <strong id="pause-kills">0</strong></div>
+          <div><span data-i18n="level">LVL</span>: <strong id="pause-level">1</strong></div>
         </div>
         <div class="btn-group">
-          <button id="btn-resume" class="action-btn primary-btn">CONTINUAR</button>
-          <button id="btn-restart-pause" class="action-btn secondary-btn">REINICIAR FASE</button>
-          <button id="btn-pause-sectors" class="action-btn outline-btn">MAPA DE SETORES</button>
-          <button id="btn-pause-shop" class="action-btn outline-btn">HANGAR DE NAVES</button>
+          <button id="btn-resume" class="action-btn primary-btn" data-i18n="resume">RESUME</button>
+          <button id="btn-restart-pause" class="action-btn secondary-btn" data-i18n="restartStage">RESTART SECTOR</button>
+          <button id="btn-pause-sectors" class="action-btn outline-btn" data-i18n="sectorMap">SECTOR MAP</button>
+          <button id="btn-pause-shop" class="action-btn outline-btn" data-i18n="shipHangar">SHIP HANGAR</button>
         </div>
       </div>
     </div>
@@ -180,8 +183,8 @@
     <!-- MODAL 4: VITÓRIA DE SETOR (1★, 2★, 3★) -->
     <div id="modal-victory" class="game-modal hidden">
       <div class="modal-card victory-card">
-        <div class="modal-badge success-badge">SETOR CONCLUÍDO COM SUCESSO</div>
-        <div class="modal-title success-text" id="victory-title">VITÓRIA NO SETOR!</div>
+        <div class="modal-badge success-badge" data-i18n="sectorCleared">SECTOR PURGED WITH SUCCESS</div>
+        <div class="modal-title success-text" id="victory-title" data-i18n="victoryTitle">SECTOR VICTORY!</div>
 
         <!-- Exibição de Estrelas Douradas -->
         <div class="victory-stars" id="victory-stars">
@@ -192,25 +195,25 @@
 
         <div class="stats-summary">
           <div class="stat-box">
-            <span class="stat-label">Tempo Sobrevivido</span>
+            <span class="stat-label" data-i18n="timeSurvived">Survival Time</span>
             <span class="stat-value" id="vic-time">01:00</span>
           </div>
           <div class="stat-box">
-            <span class="stat-label">Inimigos Abatidos</span>
+            <span class="stat-label" data-i18n="anomaliesDefeated">Anomalies Defeated</span>
             <span class="stat-value" id="vic-kills">0</span>
           </div>
           <div class="stat-box">
-            <span class="stat-label">Cristais Quânticos</span>
+            <span class="stat-label" data-i18n="crystalsEarned">Quantum Shards</span>
             <span class="stat-value" id="vic-reward">+50 💎</span>
           </div>
         </div>
 
         <div class="btn-group">
-          <button id="btn-victory-double-coins" class="action-btn rewarded-btn pulse-glow">
-            🎬 DOBRAR CRISTAIS (+100%)
+          <button id="btn-victory-double-coins" class="action-btn rewarded-btn pulse-glow" data-i18n="doubleRewards">
+            🎬 DOUBLE REWARDS (+100%)
           </button>
-          <button id="btn-victory-next" class="action-btn primary-btn">AVANÇAR AO PRÓXIMO SETOR ➔</button>
-          <button id="btn-victory-sectors" class="action-btn secondary-btn">SELETOR DE FASES</button>
+          <button id="btn-victory-next" class="action-btn primary-btn" data-i18n="nextSector">PROCEED TO NEXT SECTOR ➔</button>
+          <button id="btn-victory-sectors" class="action-btn secondary-btn" data-i18n="stageSelector">SECTOR SELECTOR</button>
         </div>
       </div>
     </div>
@@ -218,30 +221,30 @@
     <!-- MODAL 5: DERROTA (GAME OVER) -->
     <div id="modal-gameover" class="game-modal hidden">
       <div class="modal-card gameover-card">
-        <div class="modal-badge danger-badge">FUSÃO DO CASCO COMPROMETIDA</div>
-        <div class="modal-title danger">DERROTADO PELO VÁCUO</div>
-        <div class="modal-subtitle">A matéria escura sobrepujou seus sistemas!</div>
+        <div class="modal-badge danger-badge" data-i18n="hullBreach">CRITICAL HULL COLLAPSE</div>
+        <div class="modal-title danger" data-i18n="defeatTitle">FALLEN TO THE NEON VOID</div>
+        <div class="modal-subtitle" data-i18n="defeatSubtitle">The synthetic swarm breached your perimeter shields!</div>
         <div class="stats-summary">
           <div class="stat-box">
-            <span class="stat-label">Sobrevivência</span>
+            <span class="stat-label" data-i18n="timeSurvived">Survival Time</span>
             <span class="stat-value" id="go-time">00:00</span>
           </div>
           <div class="stat-box">
-            <span class="stat-label">Inimigos Abatidos</span>
+            <span class="stat-label" data-i18n="anomaliesDefeated">Anomalies Defeated</span>
             <span class="stat-value" id="go-kills">0</span>
           </div>
           <div class="stat-box">
-            <span class="stat-label">Nível Alcançado</span>
+            <span class="stat-label" data-i18n="level">Level</span>
             <span class="stat-value" id="go-level">1</span>
           </div>
         </div>
         <div class="btn-group">
-          <button id="btn-revive" class="action-btn rewarded-btn pulse-glow">
-            🎬 REVIVER COM ESCUDO (3.5s)
+          <button id="btn-revive" class="action-btn rewarded-btn pulse-glow" data-i18n="reviveBtn">
+            🎬 REVIVE WITH SHIELD (3.5s)
           </button>
-          <button id="btn-restart" class="action-btn primary-btn">TENTAR NOVAMENTE</button>
-          <button id="btn-gameover-shop" class="action-btn secondary-btn">HANGAR & UPGRADES</button>
-          <button id="btn-gameover-sectors" class="action-btn outline-btn">SELEÇÃO DE FASES</button>
+          <button id="btn-restart" class="action-btn primary-btn" data-i18n="tryAgain">TRY AGAIN</button>
+          <button id="btn-gameover-shop" class="action-btn secondary-btn" data-i18n="hangarUpgrades">HANGAR & UPGRADES</button>
+          <button id="btn-gameover-sectors" class="action-btn outline-btn" data-i18n="stageSelector">SECTOR SELECTOR</button>
         </div>
       </div>
     </div>
@@ -250,16 +253,16 @@
     <div id="modal-sectors" class="game-modal hidden">
       <div class="modal-card wide-card">
         <div class="modal-header">
-          <div class="modal-title">MAPA DE SETORES DO ABISMO QUÂNTICO</div>
+          <div class="modal-title" data-i18n="sectorsTitle">NEON VOID SECTOR NAVIGATOR</div>
           <button class="modal-close-btn" id="btn-close-sectors">✕</button>
         </div>
 
         <!-- Barra Rápida de Atalhos Pills (Mobile Friendly) -->
         <div class="modal-hub-quick-bar">
           <button class="quick-pill" id="pill-shop">🚀 HANGAR</button>
-          <button class="quick-pill" id="pill-quests">📜 MISSÕES</button>
-          <button class="quick-pill" id="pill-daily">🎁 DIÁRIO</button>
-          <button class="quick-pill" id="pill-spin">🎡 ROLETA</button>
+          <button class="quick-pill" id="pill-quests">📜 QUESTS</button>
+          <button class="quick-pill" id="pill-daily">🎁 DAILY</button>
+          <button class="quick-pill" id="pill-spin">🎡 WHEEL</button>
         </div>
 
         <div class="sectors-grid" id="sectors-grid-container"></div>
@@ -270,19 +273,19 @@
     <div id="modal-shop" class="game-modal hidden">
       <div class="modal-card wide-card">
         <div class="modal-header">
-          <div class="modal-title">HANGAR DE NAVES & ENGENHARIA QUÂNTICA</div>
+          <div class="modal-title" data-i18n="hangarTitle">FLEET HANGAR & QUANTUM ENGINEERING</div>
           <button class="modal-close-btn" id="btn-close-shop">✕</button>
         </div>
         <div class="shop-balance">
-          Saldo Disponível: <strong id="shop-coins-display">0</strong> 💎 Cristais
+          <span data-i18n="balance">Available Balance:</span> <strong id="shop-coins-display">0</strong> 💎
         </div>
 
         <!-- Seletor de Naves Desbloqueáveis -->
-        <div class="section-title">SELEÇÃO DE NAVE DE COMBATE</div>
+        <div class="section-title" data-i18n="shipsSection">COMBAT STARSHIP FLEET</div>
         <div class="ships-grid" id="ships-grid-container"></div>
 
         <!-- Melhorias Permanentes -->
-        <div class="section-title">MELHORIAS DE SISTEMAS DA FROTA</div>
+        <div class="section-title" data-i18n="systemsSection">FLEET SYSTEM UPGRADES</div>
         <div class="upgrades-list" id="permanent-upgrades-container"></div>
       </div>
     </div>
@@ -291,7 +294,7 @@
     <div id="modal-quests" class="game-modal hidden">
       <div class="modal-card">
         <div class="modal-header">
-          <div class="modal-title">MISSÕES QUÂNTICAS ATIVAS</div>
+          <div class="modal-title" data-i18n="questsTitle">ACTIVE QUANTUM QUESTS</div>
           <button class="modal-close-btn" id="btn-close-quests">✕</button>
         </div>
         <div class="quests-list" id="quests-list-container"></div>
@@ -302,13 +305,13 @@
     <div id="modal-daily" class="game-modal hidden">
       <div class="modal-card">
         <div class="modal-header">
-          <div class="modal-title">CALENDÁRIO DE RECOMPENSA DIÁRIA (7 DIAS)</div>
+          <div class="modal-title" data-i18n="dailyTitle">DAILY QUANTUM LOGIN (7 DAYS)</div>
           <button class="modal-close-btn" id="btn-close-daily">✕</button>
         </div>
         <div class="daily-calendar-grid" id="daily-calendar-container"></div>
         <div class="btn-group">
-          <button id="btn-claim-daily" class="action-btn primary-btn">COLETAR RECOMPENSA</button>
-          <button id="btn-claim-daily-double" class="action-btn rewarded-btn">🎬 DOBRAR RECOMPENSA (+100%)</button>
+          <button id="btn-claim-daily" class="action-btn primary-btn" data-i18n="claimDaily">CLAIM REWARD</button>
+          <button id="btn-claim-daily-double" class="action-btn rewarded-btn" data-i18n="claimDailyDouble">🎬 DOUBLE CLAIM (+100%)</button>
         </div>
       </div>
     </div>
@@ -317,17 +320,17 @@
     <div id="modal-spin" class="game-modal hidden">
       <div class="modal-card spin-card">
         <div class="modal-header">
-          <div class="modal-title">ROLETA QUÂNTICA DA SORTE</div>
+          <div class="modal-title" data-i18n="spinTitle">QUANTUM LUCKY WHEEL</div>
           <button class="modal-close-btn" id="btn-close-spin">✕</button>
         </div>
         <div class="wheel-container">
           <div class="wheel-pointer">▼</div>
           <canvas id="wheel-canvas" width="280" height="280"></canvas>
         </div>
-        <div class="spin-status" id="spin-status-text">Giro Grátis Disponível!</div>
+        <div class="spin-status" id="spin-status-text" data-i18n="spinAvailable">Free Spin Available!</div>
         <div class="btn-group">
-          <button id="btn-do-spin" class="action-btn primary-btn pulse-glow">GIRAR ROLETA (GRÁTIS)</button>
-          <button id="btn-ad-spin" class="action-btn rewarded-btn">🎬 GIRO EXTRA COM ANÚNCIO</button>
+          <button id="btn-do-spin" class="action-btn primary-btn pulse-glow" data-i18n="spinFree">SPIN WHEEL (FREE)</button>
+          <button id="btn-ad-spin" class="action-btn rewarded-btn" data-i18n="spinAd">🎬 EXTRA SPIN WITH AD</button>
         </div>
       </div>
     </div>

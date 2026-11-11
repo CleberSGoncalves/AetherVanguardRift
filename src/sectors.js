@@ -1,13 +1,14 @@
 // src/sectors.js
-// Catálogo de Setores e Fases Progressivas (16 Níveis em 4 Setores)
+// Catálogo de Setores e Fases de Astral Survivor: Neon Void (16 Níveis em 4 Mundos Nebulosos)
+import { i18n } from './i18n.js';
 
 export const SECTORS = [
-  // SETOR 1: CINTURÃO DE ÉTER PRIMORDIAL
+  // MUNDO 1: NEBULA SECTOR 9 - THE SYNTHETIC FRONTIER
   {
     id: 1,
     sectorNum: 1,
-    sectorTitle: 'Setor 1: Cinturão de Éter',
-    name: 'Anel de Detritos',
+    name_en: 'Outer Neon Ring',
+    name_pt: 'Anel Neon Externo',
     targetTime: 60,
     star1Kills: 20,
     star2Kills: 40,
@@ -23,8 +24,8 @@ export const SECTORS = [
   {
     id: 2,
     sectorNum: 1,
-    sectorTitle: 'Setor 1: Cinturão de Éter',
-    name: 'Vórtice de Plasma',
+    name_en: 'Plasma Rift Alpha',
+    name_pt: 'Fenda de Plasma Alpha',
     targetTime: 70,
     star1Kills: 30,
     star2Kills: 60,
@@ -40,8 +41,8 @@ export const SECTORS = [
   {
     id: 3,
     sectorNum: 1,
-    sectorTitle: 'Setor 1: Cinturão de Éter',
-    name: 'Enxame Polar Alpha',
+    name_en: 'Polar Energy Swarm',
+    name_pt: 'Enxame Polar de Energia',
     targetTime: 80,
     star1Kills: 45,
     star2Kills: 80,
@@ -57,8 +58,8 @@ export const SECTORS = [
   {
     id: 4,
     sectorNum: 1,
-    sectorTitle: 'Setor 1: Cinturão de Éter',
-    name: 'Guardião de Éter',
+    name_en: 'Sector 9 Sentinel',
+    name_pt: 'Sentinela do Setor 9',
     targetTime: 90,
     star1Kills: 50,
     star2Kills: 90,
@@ -70,17 +71,18 @@ export const SECTORS = [
     allowedEnemies: ['stalker', 'swarmer', 'tank'],
     isBossLevel: true,
     bossType: 'guardian',
-    bossName: 'Guardião Quântico Alpha',
-    bossHp: 500,
+    bossName_en: 'Sentinel Prototype 09',
+    bossName_pt: 'Protótipo Sentinela 09',
+    bossHp: 520,
     rewardCoins: 120
   },
 
-  // SETOR 2: NEBULOSA DA SINGULARIDADE
+  // MUNDO 2: SINGULARITY CORRIDORS
   {
     id: 5,
     sectorNum: 2,
-    sectorTitle: 'Setor 2: Nebulosa da Singularidade',
-    name: 'Campos Nebulares',
+    name_en: 'Nebular Core Fields',
+    name_pt: 'Campos do Núcleo Nebular',
     targetTime: 80,
     star1Kills: 40,
     star2Kills: 80,
@@ -96,8 +98,8 @@ export const SECTORS = [
   {
     id: 6,
     sectorNum: 2,
-    sectorTitle: 'Setor 2: Nebulosa da Singularidade',
-    name: 'Fissura de Vácuo',
+    name_en: 'Dark Matter Fissure',
+    name_pt: 'Fissura de Matéria Escura',
     targetTime: 90,
     star1Kills: 55,
     star2Kills: 100,
@@ -113,8 +115,8 @@ export const SECTORS = [
   {
     id: 7,
     sectorNum: 2,
-    sectorTitle: 'Setor 2: Nebulosa da Singularidade',
-    name: 'Tempestade de Prótons',
+    name_en: 'Proton Storm Belt',
+    name_pt: 'Cinturão de Tempestade de Prótons',
     targetTime: 100,
     star1Kills: 70,
     star2Kills: 120,
@@ -130,8 +132,8 @@ export const SECTORS = [
   {
     id: 8,
     sectorNum: 2,
-    sectorTitle: 'Setor 2: Nebulosa da Singularidade',
-    name: 'Titã de Plasma',
+    name_en: 'Plasma Dreadnought Titan',
+    name_pt: 'Titã Dreadnought de Plasma',
     targetTime: 110,
     star1Kills: 80,
     star2Kills: 140,
@@ -143,17 +145,18 @@ export const SECTORS = [
     allowedEnemies: ['stalker', 'swarmer', 'tank', 'spitter'],
     isBossLevel: true,
     bossType: 'titan',
-    bossName: 'Titã de Plasma Nebular',
-    bossHp: 900,
+    bossName_en: 'Cybernetic Dread Titan',
+    bossName_pt: 'Titã Cibernético do Pavor',
+    bossHp: 950,
     rewardCoins: 180
   },
 
-  // SETOR 3: FENDA DE ANTIMATÉRIA
+  // MUNDO 3: ANTIMATTER ABYSS
   {
     id: 9,
     sectorNum: 3,
-    sectorTitle: 'Setor 3: Fenda de Antimatéria',
-    name: 'Fronteira Escura',
+    name_en: 'Neon Void Frontier',
+    name_pt: 'Fronteira do Vazio Neon',
     targetTime: 90,
     star1Kills: 60,
     star2Kills: 110,
@@ -169,8 +172,8 @@ export const SECTORS = [
   {
     id: 10,
     sectorNum: 3,
-    sectorTitle: 'Setor 3: Fenda de Antimatéria',
-    name: 'Reatores Instáveis',
+    name_en: 'Volatile Reactor Breach',
+    name_pt: 'Fissura de Reator Volátil',
     targetTime: 100,
     star1Kills: 75,
     star2Kills: 130,
@@ -186,8 +189,8 @@ export const SECTORS = [
   {
     id: 11,
     sectorNum: 3,
-    sectorTitle: 'Setor 3: Fenda de Antimatéria',
-    name: 'Anomalia Gravitacional',
+    name_en: 'Graviton Singularity',
+    name_pt: 'Singularidade de Grávitons',
     targetTime: 110,
     star1Kills: 90,
     star2Kills: 160,
@@ -203,8 +206,8 @@ export const SECTORS = [
   {
     id: 12,
     sectorNum: 3,
-    sectorTitle: 'Setor 3: Fenda de Antimatéria',
-    name: 'Arauto do Abismo',
+    name_en: 'Abyssal Harbinger',
+    name_pt: 'Arauto do Abismo',
     targetTime: 120,
     star1Kills: 100,
     star2Kills: 180,
@@ -216,17 +219,18 @@ export const SECTORS = [
     allowedEnemies: ['stalker', 'swarmer', 'tank', 'spitter', 'leaper'],
     isBossLevel: true,
     bossType: 'harbinger',
-    bossName: 'Arauto do Abismo Quântico',
-    bossHp: 1500,
+    bossName_en: 'Quantum Void Harbinger',
+    bossName_pt: 'Arauto do Vazio Quântico',
+    bossHp: 1600,
     rewardCoins: 250
   },
 
-  // SETOR 4: NÚCLEO DO ABISMO DE ÉTER (CLÍMAX FINAL)
+  // MUNDO 4: THE QUANTUM OMEGA CORE
   {
     id: 13,
     sectorNum: 4,
-    sectorTitle: 'Setor 4: Núcleo do Abismo',
-    name: 'Horizonte de Eventos',
+    name_en: 'Event Horizon Nexus',
+    name_pt: 'Nexo Horizonte de Eventos',
     targetTime: 100,
     star1Kills: 85,
     star2Kills: 150,
@@ -242,8 +246,8 @@ export const SECTORS = [
   {
     id: 14,
     sectorNum: 4,
-    sectorTitle: 'Setor 4: Núcleo do Abismo',
-    name: 'Singularidade Colapsante',
+    name_en: 'Collapsing Synthetic Grid',
+    name_pt: 'Malha Sintética em Colapso',
     targetTime: 110,
     star1Kills: 100,
     star2Kills: 180,
@@ -259,8 +263,8 @@ export const SECTORS = [
   {
     id: 15,
     sectorNum: 4,
-    sectorTitle: 'Setor 4: Núcleo do Abismo',
-    name: 'O Olho do Vazio',
+    name_en: 'Eye of the Neon Void',
+    name_pt: 'Olho do Vazio Neon',
     targetTime: 120,
     star1Kills: 120,
     star2Kills: 210,
@@ -276,8 +280,8 @@ export const SECTORS = [
   {
     id: 16,
     sectorNum: 4,
-    sectorTitle: 'Setor 4: Núcleo do Abismo',
-    name: 'O Devorador de Éter',
+    name_en: 'The Void Overlord (Master)',
+    name_pt: 'O Soberano do Vazio (Mestre)',
     targetTime: 135,
     star1Kills: 140,
     star2Kills: 240,
@@ -289,12 +293,19 @@ export const SECTORS = [
     allowedEnemies: ['stalker', 'swarmer', 'tank', 'spitter', 'leaper'],
     isBossLevel: true,
     bossType: 'devourer',
-    bossName: 'O Devorador de Éter (Mestre)',
-    bossHp: 2600,
+    bossName_en: 'The Neon Void Overlord',
+    bossName_pt: 'O Soberano do Vazio Neon',
+    bossHp: 2800,
     rewardCoins: 500
   }
 ];
 
 export function getSectorById(id) {
-  return SECTORS.find(s => s.id === Number(id)) || SECTORS[0];
+  const sec = SECTORS.find(s => s.id === Number(id)) || SECTORS[0];
+  const lang = i18n.currentLocale || 'en';
+  return {
+    ...sec,
+    name: lang === 'pt' ? sec.name_pt : sec.name_en,
+    bossName: lang === 'pt' ? sec.bossName_pt : sec.bossName_en
+  };
 }

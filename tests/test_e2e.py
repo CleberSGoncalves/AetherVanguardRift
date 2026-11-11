@@ -14,12 +14,10 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 def run_e2e_tests():
     print("==================================================")
-    print("🚀 INICIANDO SUÍTE DE TESTES E2E: ASTRAEA SURVIVOR")
+    print("🚀 INICIANDO SUÍTE DE TESTES E2E: ASTRAL SURVIVOR: NEON VOID")
     print("==================================================")
 
     dist_index = os.path.abspath("E:/desenvolvimento/Godot/Projetos/AetherVanguardRift/dist/index.html")
@@ -46,7 +44,7 @@ def run_e2e_tests():
         driver.get(f"file:///{dist_index.replace(os.sep, '/')}")
         time.sleep(1.0)
 
-        assert "Astraea: Sobreviventes do Abismo" in driver.title, f"Título inesperado: {driver.title}"
+        assert "Astral Survivor: Neon Void" in driver.title, f"Título inesperado: {driver.title}"
         canvas = driver.find_element(By.ID, "game-canvas")
         assert canvas.is_displayed(), "Canvas do jogo não está visível"
         print("  ✓ Canvas principal e DOM carregados com sucesso.")
@@ -101,7 +99,7 @@ def run_e2e_tests():
         assert "hidden" in modal_pause.get_attribute("class"), "Modal de Pausa deveria ter fechado"
         print("  ✓ Pausar e Continuar funcionam sem softlock.")
 
-        # TESTE 6: Seletor de Fases (16 Níveis em 4 Setores)
+        # TESTE 6: Seletor de Fases (16 Níveis em 4 Mundos)
         print("▶ TESTE 6: Seletor de Setores e Fases...")
         btn_quick_sectors = driver.find_element(By.ID, "btn-quick-sectors")
         btn_quick_sectors.click()
@@ -168,8 +166,18 @@ def run_e2e_tests():
         assert mobile_controls.is_displayed(), "Dock inferior de controles móveis deveria estar visível no modo retrato"
         print("  ✓ Lei Anti-Sobreposição validada: dock isolado na base e canvas adaptativo.")
 
-        # TESTE 10: Auditoria Completa de Logs do Console do Navegador
-        print("▶ TESTE 10: Auditoria de Logs do Console do Navegador...")
+        # TESTE 10: Auditoria de Logs do Console e Suporte a Idioma
+        print("▶ TESTE 10: Suporte Bilingue (EN/PT) e Auditoria de Logs...")
+        driver.set_window_size(1280, 720)
+        time.sleep(0.3)
+        btn_lang = driver.find_element(By.ID, "btn-lang-toggle")
+        initial_lang = btn_lang.text
+        driver.execute_script("arguments[0].click();", btn_lang)
+        time.sleep(0.3)
+        toggled_lang = btn_lang.text
+        assert initial_lang != toggled_lang, "O botão de alternância de idioma deveria alternar entre EN e PT"
+        print(f"  ✓ Alternância de idioma validada: {initial_lang} -> {toggled_lang}")
+
         logs = driver.get_log("browser")
         severe_errors = [log for log in logs if log["level"] == "SEVERE" and "favicon" not in log["message"].lower()]
         gameplay_events = [log for log in logs if "[GAMEPLAY_EVENT]" in log["message"]]

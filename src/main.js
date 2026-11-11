@@ -3,6 +3,7 @@
 import { SurvivorGame } from './game.js';
 import { sound } from './audio.js';
 import { storage } from './storage.js';
+import { i18n } from './i18n.js';
 import { crazyGames } from './crazygames.js';
 import { modalController } from './modal_controller.js';
 import { SECTORS } from './sectors.js';
@@ -14,6 +15,7 @@ function safeSetText(id, val) {
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
+  i18n.updateDom();
   const canvas = document.getElementById('game-canvas');
   const introCanvas = document.getElementById('intro-canvas');
   const damageFlash = document.getElementById('damage-flash');
@@ -38,6 +40,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   // Botões de Áudio e Pausa
   const btnSound = document.getElementById('btn-sound-toggle');
+  const btnLang = document.getElementById('btn-lang-toggle');
   const btnPause = document.getElementById('btn-pause');
 
   // Atalhos Rápidos (Desktop)
@@ -265,6 +268,15 @@ window.addEventListener('DOMContentLoaded', async () => {
     sound.setMuted(muted);
     btnSound.textContent = muted ? '🔇' : '🔊';
   });
+
+  // Seletor de Idioma
+  if (btnLang) {
+    btnLang.addEventListener('click', () => {
+      i18n.toggleLocale();
+      sound.playClick();
+      game.updateHUD();
+    });
+  }
 
   // Botão de Pausa
   btnPause.addEventListener('click', () => {
